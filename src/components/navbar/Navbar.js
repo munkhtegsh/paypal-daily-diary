@@ -12,7 +12,6 @@ const Logo = styled.div `
     background: blue;
     width: 100px;
     height: 80%;
- 
 `
 
 const Input = styled.input`
@@ -20,26 +19,14 @@ const Input = styled.input`
 
 `
 
-class Navbar extends Component {
-    constructor() {
-        super();
-        this.state = {      
-            search: ''              
-        }        
-    }
+export default ({search, searchInput}) => (
+    <Container>
+        <Logo /> 
+        <Input  type='text' name='search'
+                value={search} 
+                onChange={(e) => searchInput(e)}
+        />
 
-    render() {
-        return (
-            <Container>
-                <Logo /> 
-                <Input  type='text' 
-                        value={this.state.search} 
-                        onChange={(e) => this.setState({search: e.target.value})}
-                />
+    </Container>
+)
 
-            </Container>
-        )
-    }
-}
-
-export default Navbar;
