@@ -5,7 +5,7 @@ const Container = styled.div`
     width: 100%;
     height: 5vh;
     background: red;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 `
 
 const Logo = styled.div `
