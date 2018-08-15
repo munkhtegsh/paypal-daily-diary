@@ -6,6 +6,9 @@ const Container = styled.div`
   height: 80vh;
   width: 70%;
   padding: 1rem;
+  float: left;
+  background: gray
+  box-sizing: border-box;
 `
 
 const Title = styled.h3`
