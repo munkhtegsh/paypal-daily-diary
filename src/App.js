@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
 import Navbar from './components/navbar/Navbar';
-import SearchList from './components/main/searchList/SearchList';
 import Routes from './routes';
 import './App.css';
-import axios from 'axios';
-
+import Calendar from './components/main/CalendarPage';
+import {connect} from 'react-redux';
+import {getTitles} from './ducks/reducer';
+import {withRouter} from 'react-router-dom';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {      
       search: '',
-      list: []
     }        
   } 
+
+  componentDidMount() {
+    this.props.getTitles();
+  }
 
   searchInput(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
-  }
-
-  componentDidMount() {
-    return axios.get('/api/v1/pages')
-      .then(res =>  this.setState({list: res.data}))
   }
 
   render() {
@@ -32,16 +31,21 @@ class App extends Component {
         <Navbar searchInput={(e) => this.searchInput(e)}
                 search={this.state.search}
         />
-        {
-          !!this.state.search
-          ?
-          <SearchList list={this.state.list}/>
-          :
-          <Routes /> 
-        }
+        <Routes /> 
+        <Calendar />
+
       </div>
     );
   }
 }
+const MyConnectedComponent = withRouter(connect(null, {getTitles})(App))
 
-export default App;
+export default MyConnectedComponent;
+
+// {
+//   !!this.state.search
+//   ?
+//   <SearchList list={this.state.list}/>
+//   :
+//   <Routes /> 
+// }

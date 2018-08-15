@@ -33,7 +33,6 @@ class CalendarPage extends Component {
     this.setState({date}, () => {
       this.props.getDate(this.state.date);
     });
-   
   }
 
   render() {

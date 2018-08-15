@@ -8,10 +8,10 @@ import store from './ducks/store';
 import {HashRouter} from 'react-router-dom';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <HashRouter>
+  <HashRouter>
+    <Provider store={store}>
       <App />
-    </HashRouter>
-  </Provider>,
+    </Provider>
+  </HashRouter>,
   document.getElementById('root'));
 registerServiceWorker();

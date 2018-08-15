@@ -2,18 +2,18 @@ import axios from 'axios';
 
 const initState = {
   date: '',
-  titles: [],
+  list: [],
 }
 
 const GET_DATE = "GET_DATE";
-const GET_TITLES = "GET_TITLES";
+const GET_LIST = "GET_LIST";
 
 export default (state = initState, action) => {
   switch (action.type) {
     case GET_DATE:
       return {...state, date: action.payload}
-    case GET_TITLES:
-      return {...state, titles: action.payload}
+    case GET_LIST + '_FULFILLED':
+      return {...state, list: action.payload}
     default:
       return state;
   }
@@ -31,8 +31,12 @@ export const getTitles = () => {
     .then( res => res.data);
 
   return {
-    type: GET_TITLES,
+    type: GET_LIST,
     payload: promise
   }
 }
+
+// export const getDiary = () => {
+//   const
+// }
 

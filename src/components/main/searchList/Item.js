@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default ({title}) => (
+export default (props) => (
   <div>
-    Date: Title  
+    {props.date}: {props.title}
   </div>
 )

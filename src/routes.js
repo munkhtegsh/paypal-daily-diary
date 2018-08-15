@@ -1,17 +1,12 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import Main from './components/main/Main';
-import List from './components/main/searchList/SearchList';
+import SearchList from './components/main/searchList/SearchList';
+import Diary from './components/main/Diary';
 
 export default () => (
   <Switch>
-    <Route path='/' component={Main} exact />
-    <Route path='/api/v1/pages' component={Main} exact />
-  
+    <Route path="/api/v1/pages/:id" component={Diary}/>
+    <Route path="/api/v1/pages" component={SearchList}/>
 
-    
   </Switch>
 )
-
-// <Route path='/api/v1/pages' component={DailyPages} />
-// <Route path='/api/pages/:'
