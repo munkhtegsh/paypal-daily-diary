@@ -5,6 +5,7 @@ import enUS from 'rc-calendar/lib/locale/en_US';
 import 'rc-calendar/assets/index.css';
 import moment from 'moment';
 import 'moment/locale/en-gb';
+import axios from 'axios';
 
 const format = 'YYYY-MM-DD';
 const now = moment();
@@ -17,7 +18,7 @@ const Container = styled.div`
   float: right;
 `
 
-class CalendarComponent extends Component {
+class CalendarPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -26,9 +27,16 @@ class CalendarComponent extends Component {
     }
   }
 
+  getPages() {
+    return axios.get('/api/v1/pages').then(res => {
+      console.log(res.data)
+    })
+  }
+
   datePick(date) {
     let today = date.format('YYYY-MM-DD');
-    this.setState({date: today})
+    this.setState({date: today});
+    // this.getPages();
   }
 
   render() {
@@ -48,4 +56,4 @@ class CalendarComponent extends Component {
   }
 }
 
-export default CalendarComponent;
+export default CalendarPage;

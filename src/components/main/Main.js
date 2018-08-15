@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Diary from './Diary';
-import CalendarComponent from './CalendarComponent';
+import CalendarPage from './CalendarPage';
 
 const Container = styled.div`
   background: green;
@@ -11,7 +11,7 @@ export default () => {
   return (
     <Container>
       <Diary />
-      <CalendarComponent />
+      <CalendarPage />
     </Container>
   )
 }
