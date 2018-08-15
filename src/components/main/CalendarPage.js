@@ -5,7 +5,8 @@ import enUS from 'rc-calendar/lib/locale/en_US';
 import 'rc-calendar/assets/index.css';
 import moment from 'moment';
 import 'moment/locale/en-gb';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import {getDate} from '../../ducks/reducer';
 
 const format = 'YYYY-MM-DD';
 const now = moment();
@@ -19,28 +20,23 @@ const Container = styled.div`
 `
 
 class CalendarPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       date: '',
       today: moment().format("YYYY-MM-DD")
     }
   }
 
-  getPages() {
-    return axios.get('/api/v1/pages').then(res => {
-      console.log(res.data)
-    })
-  }
-
-  datePick(date) {
-    let today = date.format('YYYY-MM-DD');
-    this.setState({date: today});
-    // this.getPages();
+  datePick(pickDate) {
+    let date = pickDate.format('YYYY-MM-DD');
+    this.setState({date}, () => {
+      this.props.getDate(this.state.date);
+    });
+   
   }
 
   render() {
-    console.log(this.state.date)
     return (
       <Container>
         <Calendar 
@@ -56,4 +52,10 @@ class CalendarPage extends Component {
   }
 }
 
-export default CalendarPage;
+const maptStateToProps = (state) => {
+  return {
+    date: state.date
+  }
+}
+
+export default connect(maptStateToProps, {getDate})(CalendarPage);
