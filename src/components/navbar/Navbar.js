@@ -1,11 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Input} from 'antd';
+import 'antd/dist/antd.css';
 
+const Search = Input.Search;
 const Container = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    height: 5vh;
-    background: red;
-    box-sizing: border-box; 
+    height: 7vh;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    box-shadow: 0 1px 5px #ccc;
+    margin-bottom: 1rem;
 `
 
 const Logo = styled.div `
@@ -14,18 +22,16 @@ const Logo = styled.div `
     height: 80%;
 `
 
-const Input = styled.input`
-    float: right;
-
-`
-
 export default ({search, searchInput}) => (
     <Container>
-        <Logo /> 
-        <Input  type='text' name='search'
-                value={search} 
-                onChange={(e) => searchInput(e)}
-        />
+        <Logo> Daily Diary </Logo> 
+        <Search
+            name="search"
+            value={search}
+            placeholder="Search text"
+            onChange={(e) => searchInput(e)}
+            style={{ width: 200 }}
+      />
 
     </Container>
 )

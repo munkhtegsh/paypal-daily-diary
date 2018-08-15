@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from 'antd/lib/button';
+import 'antd/dist/antd.css';
 
 const Container = styled.div`
   position: relative;
@@ -7,8 +9,8 @@ const Container = styled.div`
   width: 70%;
   padding: 1rem;
   float: left;
-  background: gray
   box-sizing: border-box;
+  box-shadow: 0 1px 5px #ccc;
 `
 
 const Title = styled.h3`
@@ -29,11 +31,11 @@ const Text = styled.p`
 
 `
 
-const Button = styled.button`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-`
+// const Buttonn = styled.button`
+//   position: absolute;
+//   bottom: 0;
+//   right: 0;
+// `
 
 
 export default () => {
@@ -45,7 +47,10 @@ export default () => {
       </Top>
 
       <Text>paragraph</Text>
-      <Button>Edit</Button> 
-    </Container>
+      <Button type="primary" 
+              style={{  position: "absolute", bottom: '1rem', right: '1rem'}}>
+              Edit
+      </Button>
+     </Container>
   )
 }

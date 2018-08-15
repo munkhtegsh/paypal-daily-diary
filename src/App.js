@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Navbar from './components/navbar/Navbar';
 import SearchList from './components/main/searchList/SearchList';
 import Routes from './routes';
+import './App.css'
+
 
 class App extends Component {
   constructor() {
