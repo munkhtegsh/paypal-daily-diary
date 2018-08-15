@@ -1,12 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
+import Diary from './Diary';
 
+const Container = styled.div`
+  background: green;
+  width: 100%;
+`
 export default () => {
   return (
-    <div>
-      title
-      date
-      paragraph
-      <button> Edit </button> 
-    </div>
+    <Container>
+      <Diary />
+    </Container>
   )
 }

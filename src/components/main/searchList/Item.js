@@ -2,6 +2,6 @@ import React from 'react';
 
 export default () => (
   <div>
-    Items
+    Date: Title  
   </div>
 )
