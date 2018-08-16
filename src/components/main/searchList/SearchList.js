@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Item from './Item';
 import {connect} from 'react-redux';
-import {getTitles} from '../../../ducks/reducer';
+import {getTitles, getTodayList} from '../../../ducks/reducer';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import Button from 'antd/lib/button';
@@ -20,11 +20,16 @@ const Container = styled.div`
 class SearchList extends Component {
   constructor(props) {
     super(props);
-  }
-  componentDidMount() {
-    this.props.getTitles();
+    this.state = {
+      todayBtnCliked: false
+    }
   }
 
+  getTodayList() {
+    this.props.getTodayList();
+    this.setState({todayBtnCliked: !this.state.todayBtnCliked});
+  }
+  
   render() {
     const list = this.props.list.map((title, i) => 
     <Link to={`/api/v1/pages/${title.id}`} key={i}>
@@ -41,6 +46,23 @@ class SearchList extends Component {
           Add
         </Button>
       </Link>
+      {
+        this.state.todayBtnCliked
+        ?
+        <Button type="primary" 
+          onClick={() => this.props.getTitles()}
+          style={{position: "absolute", bottom: '1rem', left: '1rem'}}>
+          All
+        </Button>
+        :
+        <Button type="primary" 
+          onClick={() => this.getTodayList()}
+          style={{position: "absolute", bottom: '1rem', left: '1rem'}}>
+          Today
+        </Button>
+      
+      }
+
       </Container>
     )
   }
@@ -52,5 +74,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {getTitles})(SearchList);
+export default connect(mapStateToProps, {getTitles, getTodayList})(SearchList);
 

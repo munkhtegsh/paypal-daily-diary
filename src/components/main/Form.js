@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {getTitles} from '../../ducks/reducer';
 
 const Container = styled.div`
   position: relative;
@@ -54,6 +55,7 @@ class Form extends Component {
 
   send() {
     axios.post('/api/pages', this.state);
+    this.props.getTitles();
   }
   
   render() {
@@ -85,4 +87,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Form);
+export default connect(mapStateToProps, {getTitles})(Form);

@@ -5,6 +5,8 @@ import 'antd/dist/antd.css';
 import {connect} from 'react-redux';
 import {getTitles} from '../../ducks/reducer';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
+
 const Container = styled.div`
   position: relative;
   height: 80vh;
@@ -119,6 +121,12 @@ class Diary extends Component {
                     onClick={e => this.toggleEdit(e)}>
                     Edit
             </Button>
+            <Link to='/api/v1/pages'>
+            <Button type="primary" 
+                    style={{position: "absolute", bottom: '1rem', left: '1rem'}}>
+                   Back
+            </Button>
+            </Link>
             </Container>
           )
         } 
