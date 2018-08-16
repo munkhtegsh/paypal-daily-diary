@@ -14,7 +14,7 @@ module.exports = [
   {  
     id: 3,
     title: 'Second paypal day',
-    date: '2018-09-17',
+    date: '2018-08-16',
     text: 'Enjoying the experience'
   },
   {  

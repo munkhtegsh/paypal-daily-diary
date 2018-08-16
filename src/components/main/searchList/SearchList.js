@@ -41,7 +41,7 @@ class SearchList extends Component {
   
   render() {
     const list = this.props.list.map((title, i) => 
-    <Link to={`/api/v1/pages/${title.id}`} key={i}>
+    <Link to={`/api/v1/pages/${title.date}`} key={i}>
       <Item title={title.title} date={title.date}/>
     </Link>
     )
@@ -64,11 +64,14 @@ class SearchList extends Component {
           All
         </Button>
         :
-        <Button type="primary" 
-          onClick={() => this.getTodayList()}
-          style={{position: "absolute", bottom: '1rem', left: '1rem'}}>
-          Today
-        </Button>
+        <Link to='/api/pages/today'>
+          <Button type="primary" 
+            onClick={() => this.getTodayList()}
+            style={{position: "absolute", bottom: '1rem', left: '1rem'}}>
+            Today
+          </Button>
+        </Link>
+
       
       }
 

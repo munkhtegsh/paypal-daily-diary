@@ -6,9 +6,9 @@ import Form from './components/main/Form';
 
 export default () => (
   <Switch>
-    <Route path="/api/pages" component={Form} exact/>
-    <Route path="/api/v1/pages/:id" component={Diary}/>
+    <Route path="/api/v1/pages/:date" component={Diary}/>
     <Route path="/api/v1/pages" component={SearchList}/>
-
+    <Route path="/api/pages/today" component={SearchList}/>
+    <Route path="/api/pages" component={Form} exact/>
   </Switch>
 )

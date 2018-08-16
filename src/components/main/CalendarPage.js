@@ -31,9 +31,10 @@ class CalendarPage extends Component {
   datePick(pickDate) {
     let date = pickDate.format('YYYY-MM-DD');
     this.setState({date}, () => {
-      this.props.getDate(this.state.date);
+      // this.props.getDate(this.state.date);
+      this.props.getDayList(this.state.date);
+
     });
-    this.props.getDayList(this.state.today);
   }
 
   render() {
