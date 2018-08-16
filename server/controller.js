@@ -5,7 +5,6 @@ let id = 5;
 
 module.exports = {
   create: (req, res) => {
-    console.log(req.body)
     data.push({...req.body, id: id});
     res.status(200).send(data);
     id++;
@@ -26,12 +25,18 @@ module.exports = {
   },
   readToday: (req, res) => {
     let todayDiary = data.filter(item => {
-      console.log(today, item.date)
-
       if (item.date === today) {
         return item;
       }
     });
     res.status(200).send(todayDiary);
+  },
+  readDate: (req, res) => {
+    let dateList = data.filter(item => {
+      if (item.date === req.params.date) {
+        return item;
+      }
+    });
+    res.status(200).send(dateList);
   }
 }

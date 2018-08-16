@@ -8,6 +8,7 @@ const initState = {
 const GET_DATE = "GET_DATE";
 const GET_LIST = "GET_LIST";
 const GET_TODAY_LIST = 'UPDATE_LIST';
+const GET_DAY_LIST = 'GET_DAY_LIST';
 
 export default (state = initState, action) => {
   switch (action.type) {
@@ -16,6 +17,8 @@ export default (state = initState, action) => {
     case GET_LIST + '_FULFILLED':
       return {...state, list: action.payload}
     case GET_TODAY_LIST + '_FULFILLED':
+      return {...state, list: action.payload}
+    case GET_DAY_LIST + '_FULFILLED':
       return {...state, list: action.payload}
     default:
       return state;
@@ -43,12 +46,22 @@ export const getTitles = () => {
 }
 
 export const getTodayList = () => {
-  const promise = axios.get('/api/pages/today')
+  const todayList = axios.get('/api/pages/today')
   .then( res => res.data);
 
   return {
     type: GET_TODAY_LIST,
-    payload: promise
+    payload: todayList
+  }
+}
+
+export const getDayList = (date) => {
+  const dayList = axios.get(`/api/pages/${date}`)
+  .then( res => res.data);
+
+  return {
+    type: GET_DAY_LIST,
+    payload: dayList
   }
 }
 

@@ -6,7 +6,7 @@ import 'rc-calendar/assets/index.css';
 import moment from 'moment';
 import 'moment/locale/en-gb';
 import {connect} from 'react-redux';
-import {getDate} from '../../ducks/reducer';
+import {getDate, getDayList} from '../../ducks/reducer';
 
 const format = 'YYYY-MM-DD';
 const now = moment();
@@ -33,6 +33,7 @@ class CalendarPage extends Component {
     this.setState({date}, () => {
       this.props.getDate(this.state.date);
     });
+    this.props.getDayList(this.state.today);
   }
 
   render() {
@@ -57,4 +58,4 @@ const maptStateToProps = (state) => {
   }
 }
 
-export default connect(maptStateToProps, {getDate})(CalendarPage);
+export default connect(maptStateToProps, {getDate, getDayList})(CalendarPage);

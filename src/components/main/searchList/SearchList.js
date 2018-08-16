@@ -27,6 +27,15 @@ class SearchList extends Component {
 
   getTodayList() {
     this.props.getTodayList();
+    this.toggleToday();
+  }
+
+  getTitles() {
+    this.props.getTitles();
+    this.toggleToday();
+  }
+
+  toggleToday() {
     this.setState({todayBtnCliked: !this.state.todayBtnCliked});
   }
   
@@ -50,7 +59,7 @@ class SearchList extends Component {
         this.state.todayBtnCliked
         ?
         <Button type="primary" 
-          onClick={() => this.props.getTitles()}
+          onClick={() => this.getTitles()}
           style={{position: "absolute", bottom: '1rem', left: '1rem'}}>
           All
         </Button>
