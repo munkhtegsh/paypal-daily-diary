@@ -4,7 +4,7 @@ import Routes from './routes';
 import './App.css';
 import Calendar from './components/main/CalendarPage';
 import {connect} from 'react-redux';
-import {getTitles} from './ducks/reducer';
+import {getTitles, getMatchList} from './ducks/reducer';
 import {withRouter} from 'react-router-dom';
 
 class App extends Component {
@@ -20,12 +20,18 @@ class App extends Component {
   }
 
   searchInput(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
+    if (e.which === 13) {
+      this.setState({searchInput: e.target.value}, () => {
+        this.props.getMatchList(this.state.searchInput);
+      })
+    }
   }
+  // this.setState({
+  //   [e.target.name]: e.target.value
+  // })
 
   render() {
+    console.log(this.state.searchInput)
     return (
       <div className="App">
         <Navbar searchInput={(e) => this.searchInput(e)}
@@ -38,7 +44,7 @@ class App extends Component {
     );
   }
 }
-const MyConnectedComponent = withRouter(connect(null, {getTitles})(App))
+const MyConnectedComponent = withRouter(connect(null, {getTitles, getMatchList})(App))
 
 export default MyConnectedComponent;
 

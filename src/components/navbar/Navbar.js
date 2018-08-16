@@ -30,12 +30,15 @@ export default ({search, searchInput}) => (
         <Logo> DAILY DIARY </Logo> 
         <Search
             name="search"
-            value={search}
             placeholder="Search text"
-            onChange={(e) => searchInput(e)}
+            onKeyPress={(e) => searchInput(e)}
             style={{ width: 200 }}
       />
 
     </Container>
 )
-
+// name="search"
+// value={search}
+// placeholder="Search text"
+// onKeyPress={(e) => searchInput(e)}
+// style={{ width: 200 }}

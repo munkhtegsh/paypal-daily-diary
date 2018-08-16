@@ -9,6 +9,7 @@ const GET_DATE = "GET_DATE";
 const GET_LIST = "GET_LIST";
 const GET_TODAY_LIST = 'UPDATE_LIST';
 const GET_DAY_LIST = 'GET_DAY_LIST';
+const GET_MATCH_LIST = 'GET_MATCH_LIST';
 
 export default (state = initState, action) => {
   switch (action.type) {
@@ -19,6 +20,8 @@ export default (state = initState, action) => {
     case GET_TODAY_LIST + '_FULFILLED':
       return {...state, list: action.payload}
     case GET_DAY_LIST + '_FULFILLED':
+      return {...state, list: action.payload}
+    case GET_MATCH_LIST + '_FULFILLED':
       return {...state, list: action.payload}
     default:
       return state;
@@ -65,7 +68,13 @@ export const getDayList = (date) => {
   }
 }
 
-// export const getDiary = () => {
-//   const
-// }
+export const getMatchList = (keyword) => {
+  const matchList = axios.get(`/api/v1/pags?search=${keyword}`)
+  .then( res => res.data);
+
+  return {
+    type: GET_MATCH_LIST,
+    payload: matchList
+  }
+}
 

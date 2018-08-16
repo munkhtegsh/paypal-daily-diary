@@ -38,5 +38,25 @@ module.exports = {
       }
     });
     res.status(200).send(dateList);
+  },
+  filterByKeyWord: (req, res) => {
+    let keyWord = req.query.search.toLowerCase();
+    let exceptWords = ['the', 'and', 'or', 'is', 'a', 'then'];
+    console.log(req.query.search)
+    for(let word of exceptWords) {
+      if (word === keyWord) {
+        res.status(200).send([]);
+        return;
+      } 
+    }
+    let filterList = data.filter(item => {
+      let matchItem = item.title.toLowerCase();
+      let matchText = item.text.toLowerCase();
+
+      if ( matchItem.includes(keyWord) || matchText.includes(keyWord)) {
+        return item;
+      }
+    })
+    res.status(200).send(filterList);
   }
 }

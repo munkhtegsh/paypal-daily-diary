@@ -10,5 +10,6 @@ export default () => (
     <Route path="/api/v1/pages" component={SearchList}/>
     <Route path="/api/pages/today" component={SearchList}/>
     <Route path="/api/pages" component={Form} exact/>
+    <Route path="/api/v1/pags" component={SearchList} exact/>
   </Switch>
 )
