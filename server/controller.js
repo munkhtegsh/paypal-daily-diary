@@ -10,5 +10,16 @@ module.exports = {
   },
   read: (req, res) => {
     res.status(200).send(data);
+  },
+  update: (req, res) => {
+    let id = req.params.id;    
+    let info = req.body;
+    let list = data.map(item => {
+      if (item.id === +id) {
+        item = {...info, id:id}
+      }
+      return item;
+    });
+    res.status(200).send(list);
   }
 }

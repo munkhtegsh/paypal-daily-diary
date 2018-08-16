@@ -17,14 +17,17 @@ const Container = styled.div`
 `
 
 const Logo = styled.div `
-    background: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100px;
     height: 80%;
+    font-weight: bold;
 `
 
 export default ({search, searchInput}) => (
     <Container>
-        <Logo> Daily Diary </Logo> 
+        <Logo> DAILY DIARY </Logo> 
         <Search
             name="search"
             value={search}

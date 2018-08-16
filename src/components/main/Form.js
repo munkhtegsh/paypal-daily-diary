@@ -48,7 +48,7 @@ class Form extends Component {
     this.state = {
       title: '',
       date: moment().format('YYYY-MM-DD'),
-      note: ''
+      text: ''
     }
   }
 
@@ -66,7 +66,7 @@ class Form extends Component {
   
       <TitleInput onChange={(e) => this.setState({title: e.target.value})}/>
       <Title> Note: </Title>
-      <Note autoFocus onChange={(e) => this.setState({note: e.target.value})}/>
+      <Note autoFocus onChange={(e) => this.setState({text: e.target.value})}/>
       <Link to='/api/v1/pages'>
         <Button type="primary" 
                 style={{position: "absolute", bottom: '1rem', right: '1rem'}}

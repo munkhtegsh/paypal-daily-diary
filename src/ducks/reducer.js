@@ -7,6 +7,7 @@ const initState = {
 
 const GET_DATE = "GET_DATE";
 const GET_LIST = "GET_LIST";
+// const UPDATE_LIST = 'UPDATE_LIST';
 
 export default (state = initState, action) => {
   switch (action.type) {
@@ -35,6 +36,13 @@ export const getTitles = () => {
     payload: promise
   }
 }
+
+// const updateList = (updatedItem) => {
+//   return {
+//     type: UPDATE_LIST,
+//     payload: updatedItem
+//   }
+// }
 
 // export const getDiary = () => {
 //   const

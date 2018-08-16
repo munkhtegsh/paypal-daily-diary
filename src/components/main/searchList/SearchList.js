@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {getTitles} from '../../../ducks/reducer';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import Button from 'antd/lib/button';
+import 'antd/dist/antd.css';
 
 const Container = styled.div`
   position: relative;
@@ -33,6 +35,12 @@ class SearchList extends Component {
       <Container>
         Search Result: 
         {list}
+        <Link to='/api/pages'>
+        <Button type="primary" 
+          style={{position: "absolute", bottom: '1rem', right: '1rem'}}>
+          Add
+        </Button>
+      </Link>
       </Container>
     )
   }

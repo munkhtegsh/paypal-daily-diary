@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 
 app.get('/api/v1/pages', ctr.read);
 app.post('/api/pages', ctr.create);
+app.put('/api/pages/:id', ctr.update);
 const port = 4011;
 
 app.listen(port, () => console.log(`Port is running on port: ${port}`));
