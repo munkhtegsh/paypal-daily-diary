@@ -83,9 +83,11 @@ class Diary extends Component {
   }
 
   render() {
-    let diaryDate = this.props.match.params.date; 
+    let diaryId = this.props.match.params.id; 
+    console.log(diaryId)
+
     let diary = this.props.list.map((item) => {
-      if (diaryDate === item.date) {
+      if (+diaryId === item.id) {
         return (
             this.state.edit
             ?

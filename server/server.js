@@ -4,6 +4,7 @@ const ctr = require('./controller');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/../build')); 
 
 app.get('/api/v1/pages', ctr.read);
 app.post('/api/pages', ctr.create);

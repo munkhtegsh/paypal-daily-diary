@@ -6,6 +6,7 @@ import Calendar from './components/main/CalendarPage';
 import {connect} from 'react-redux';
 import {getTitles, getMatchList} from './ducks/reducer';
 import {withRouter} from 'react-router-dom';
+import SearchList from './components/main/searchList/SearchList';
 
 class App extends Component {
   constructor() {
@@ -23,21 +24,22 @@ class App extends Component {
     if (e.which === 13) {
       this.setState({searchInput: e.target.value}, () => {
         this.props.getMatchList(this.state.searchInput);
-      })
+      });
     }
   }
+
   // this.setState({
   //   [e.target.name]: e.target.value
   // })
 
   render() {
-    console.log(this.state.searchInput)
+    console.log(!!this.state.searchInput)
     return (
       <div className="App">
         <Navbar searchInput={(e) => this.searchInput(e)}
                 search={this.state.search}
         />
-        <Routes /> 
+        <Routes />
         <Calendar />
 
       </div>
