@@ -44,8 +44,10 @@ class SearchList extends Component {
     <Link to={`/api/v1/pages/${title.id}`} key={i}>
       <Item title={title.title} date={title.date}/>
     </Link>
-    )
+    );
+
     return (
+
       <Container>
         Search Result: 
         {list}
@@ -71,8 +73,6 @@ class SearchList extends Component {
             Today
           </Button>
         </Link>
-
-      
       }
 
       </Container>
@@ -82,7 +82,8 @@ class SearchList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    list: state.list
+    list: state.list,
+    todayList: state.todayList
   }
 }
 

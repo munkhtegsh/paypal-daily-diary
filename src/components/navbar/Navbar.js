@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import {Input} from 'antd';
 import 'antd/dist/antd.css';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {getTitles} from '../../ducks/reducer';
 
 const Search = Input.Search;
 const Container = styled.div`
@@ -25,18 +28,45 @@ const Logo = styled.div `
     font-weight: bold;
 `
 
-export default ({search, searchInput}) => (
-    <Container>
-        <Logo> DAILY DIARY </Logo> 
-        <Search
-            name="search"
-            placeholder="Search text"
-            onKeyPress={(e) => searchInput(e)}
-            style={{ width: 200 }}
-      />
+class Navbar extends Component {
+    render() {
+        return (
+            (
+            <Container>
+                <Link to='/api/v1/pages/'>
+                    <Logo onClick={() => this.props.getTitles}> DAILY DIARY </Logo>
+                </Link>
+                <Search
+                    name="search"
+                    placeholder="Search text"
+                    onKeyPress={(e) => this.props.searchInput(e)}
+                    style={{ width: 200 }}
+                />
+            </Container>
+            )
+        )
+    }
+}
 
-    </Container>
-)
+export default connect(null, {getTitles})(Navbar);
+
+// export default ({searchInput}) => (
+//     <Container>
+//         <Link to='/api/v1/pages/'>
+//             <Logo> DAILY DIARY </Logo>
+//         </Link>
+//         <Search
+//             name="search"
+//             placeholder="Search text"
+//             onKeyPress={(e) => this.props.searchInput(e)}
+//             style={{ width: 200 }}
+//       />
+
+//     </Container>
+// )
+
+
+
 // name="search"
 // value={search}
 // placeholder="Search text"

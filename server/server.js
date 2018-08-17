@@ -13,5 +13,5 @@ app.get('/api/pages/today', ctr.readToday);
 app.get('/api/pages/:date', ctr.readDate);
 app.get('/api/v1/pags', ctr.filterByKeyWord);
 
-const port = 4011;
+const port = process.env.PORT || 4011;
 app.listen(port, () => console.log(`Port is running on port: ${port}`));

@@ -3,6 +3,7 @@ import axios from 'axios';
 const initState = {
   date: '',
   list: [],
+  todayList: []
 }
 
 const GET_DATE = "GET_DATE";
